@@ -1,20 +1,14 @@
-/// <summary>
-/// A basic implementation of a Queue
-/// </summary>
+using System.Collections.Generic;
+
+namespace code;
+
 public class PersonQueue
 {
     private readonly List<Person> _queue = new();
 
     public int Length => _queue.Count;
 
-    /// <summary>
-    /// Add a person to the queue
-    /// </summary>
-    /// <param name="person">The person to add</param>
-    public void Enqueue(Person person)
-    {
-        _queue.Insert(0, person);
-    }
+    public void Enqueue(Person person) => _queue.Add(person);
 
     public Person Dequeue()
     {
@@ -23,13 +17,7 @@ public class PersonQueue
         return person;
     }
 
-    public bool IsEmpty()
-    {
-        return Length == 0;
-    }
+    public bool IsEmpty() => Length == 0;
 
-    public override string ToString()
-    {
-        return $"[{string.Join(", ", _queue)}]";
-    }
+    public override string ToString() => $"[{string.Join(", ", _queue)}]";
 }
