@@ -1,11 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections.Generic;
 
-// DO NOT MODIFY THIS FILE
-
-public static class TupleListExtensionMethods
+public static class TupleListExtensionMethod
 {
-    public static string AsString(this IEnumerable list)
+    public static string AsString(this List<(int, int)> path)
     {
-        return "<List>{" + string.Join(", ", list.Cast<ValueTuple<int, int>>()) + "}";
+        return string.Join(" -> ", path);
     }
 }
