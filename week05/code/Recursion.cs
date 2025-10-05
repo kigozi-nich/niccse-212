@@ -12,7 +12,7 @@ namespace Week5Code
             return n * n + SumSquaresRecursive(n - 1);
         }
 
-        // Problem 2: Permutations Choose (Generate permutations of length "size" from "letters")
+        // Problem 2: Permutations Choose
         public static List<string> PermutationsChoose(string letters, int size)
         {
             List<string> results = new List<string>();
@@ -35,29 +35,24 @@ namespace Week5Code
             }
         }
 
-        // Problem 3: Climbing Stairs (Memoized recursion)
-        public static int CountWaysToClimb(int s, Dictionary<int, int>? remember = null)
+        // Problem 3: Climbing Stairs
+        public static int CountWaysToClimb(int s, Dictionary<int, int>? memo = null)
         {
-            if (remember == null)
-                remember = new Dictionary<int, int>();
+            if (memo == null) memo = new Dictionary<int, int>();
 
-            // Base cases
             if (s < 0) return 0;
             if (s == 0) return 1;
             if (s == 1) return 1;
             if (s == 2) return 2;
             if (s == 3) return 4;
 
-            // Check cache
-            if (remember.ContainsKey(s))
-                return remember[s];
+            if (memo.ContainsKey(s)) return memo[s];
 
-            // Recursive sum of previous 3 steps
-            var result = CountWaysToClimb(s - 1, remember)
-                       + CountWaysToClimb(s - 2, remember)
-                       + CountWaysToClimb(s - 3, remember);
+            int result = CountWaysToClimb(s - 1, memo) +
+                         CountWaysToClimb(s - 2, memo) +
+                         CountWaysToClimb(s - 3, memo);
 
-            remember[s] = result;
+            memo[s] = result;
             return result;
         }
 
@@ -79,7 +74,6 @@ namespace Week5Code
 
             if (pattern[index] == '*')
             {
-                // Generate '0' first, then '1' to match expected order
                 GeneratePatterns(pattern, index + 1, current + '0', results);
                 GeneratePatterns(pattern, index + 1, current + '1', results);
             }

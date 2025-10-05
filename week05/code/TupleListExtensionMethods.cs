@@ -1,18 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-public static class PathExtensions
+namespace Week5Code
 {
-    public static string AsString(this List<(int, int)> path)
+    public static class PathExtensions
     {
-        if (path == null || path.Count == 0) return string.Empty;
-
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < path.Count; i++)
+        public static string AsString(this List<(int, int)> path)
         {
-            sb.Append($"({path[i].Item1},{path[i].Item2})");
-            if (i != path.Count - 1) sb.Append(" -> ");
+            if (path == null || path.Count == 0) return string.Empty;
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < path.Count; i++)
+            {
+                sb.Append($"({path[i].Item1},{path[i].Item2})");
+                if (i != path.Count - 1) sb.Append(" -> ");
+            }
+            return sb.ToString();
         }
-        return sb.ToString();
     }
 }
