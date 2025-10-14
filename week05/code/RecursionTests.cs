@@ -43,7 +43,7 @@ namespace Week5Code
                 { 1, 0, 1, 1 },
                 { 1, 1, 0, 1 },
                 { 0, 1, 2, 0 },
-                
+                { 1, 1, 1, 1 }
             };
 
             Maze m = new Maze(maze);
